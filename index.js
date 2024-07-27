@@ -24,7 +24,7 @@ app.use(morgan("common"))
 app.use(cookieParser())
 app.use(cors({
     credentials: true,
-    origin: "https://socio-sphere-server-psi.vercel.app/"
+    origin: "https://socio-sphere-client.vercel.app/"
 }
 ))
 
