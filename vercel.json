@@ -5,6 +5,11 @@
        { "src": "index.js", "use": "@vercel/node" }
     ],
     "routes": [
-       { "src": "/(.*)", "dest": "/app.js" }
+       { "src": "/(.*)",
+        "dest": "/app.js",
+        "methods": ["GET","POST","HEAD","PUT","PATCH","DELETE"],
+       "headers": {
+        "Access-Control-Allow-Origin": "*"
+    }}
     ]
  }
