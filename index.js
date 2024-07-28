@@ -23,12 +23,14 @@ app.use(express.json({limit: '10mb'}))
 app.use(morgan("common"))
 app.use(cookieParser())
 app.use(cors({
-    credentials: true,
+    
     origin: process.env.CORS_ORIGIN,
+    credentials: true,
     methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+   
     allowedHeaders: ['Content-Type'],
     exposedHeaders: ['Content-Type'],
-    
+
 }
 ))
 app.options('*', cors())
