@@ -27,6 +27,7 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN
 }
 ))
+app.options('*', cors())
 
 app.use('/auth', authRouter)
 app.use('/posts', postsRouter)
