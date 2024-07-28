@@ -26,13 +26,6 @@ app.use(cors({
     
     origin: process.env.CORS_ORIGIN,
     credentials: true,
-    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
-    headers: {
-        "Access-Control-Allow-Origin": "*"
-    },
-    allowedHeaders: ['Content-Type'],
-    exposedHeaders: ['Content-Type'],
-
 }
 ))
 app.options('*', cors())
