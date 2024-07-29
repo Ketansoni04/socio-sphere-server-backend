@@ -28,7 +28,7 @@ app.use(cors({
     credentials: true,
 }
 ))
-app.options('*', cors())
+app.options('https://socio-sphere-client.vercel.app/', cors())
 
 app.use('/auth', authRouter)
 app.use('/posts', postsRouter)
