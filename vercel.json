@@ -1,15 +1,27 @@
+
 {
     "version": 2,
-    "name": "music-album",
     "builds": [
-       { "src": "index.js", "use": "@vercel/node" }
+        {
+            "src": "./index.js",
+            "use": "@vercel/node"
+        }
     ],
-    "routes": [
-       { "src": "/(.*)",
-        "dest": "/app.js",
-        "methods": ["GET","POST","HEAD","PUT","PATCH","DELETE"],
-       "headers": {
-        "Access-Control-Allow-Origin": "*"
-    }}
+    "rewrites": [
+        { "source": "/(.*)", "destination": "src/app.js" }
+    ],
+    "headers": [
+        {
+          "source": "/(.*)",
+          "headers": [
+            { "key": "Access-Control-Allow-Origin", "value": "*" }
+          ]
+        },
+        {
+          "source": "/vercel_app_domain_name/(.*)",
+          "headers": [
+            { "key": "Access-Control-Allow-Origin", "value": "*" }
+          ]
+        }  
     ]
- }
+}
