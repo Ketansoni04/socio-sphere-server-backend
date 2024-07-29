@@ -18,7 +18,7 @@
           ]
         },
         {
-          "source": "/vercel_app_domain_name/(.*)",
+          "source": "/https://socio-sphere-server-psi.vercel.app/(.*)",
           "headers": [
             { "key": "Access-Control-Allow-Origin", "value": "*" }
           ]
