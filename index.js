@@ -3,6 +3,7 @@ const express = require("express");
 const dbConnect = require("./dbConnect");
 const dotenv = require("dotenv");
 const authRouter = require('./routers/authRouter');
+const path = require("path");
 const postsRouter = require('./routers/postsRouter');
 const userRouter = require('./routers/userRouter');
 const cookieParser = require('cookie-parser');
@@ -23,12 +24,10 @@ app.use(express.json({limit: '10mb'}))
 app.use(morgan("common"))
 app.use(cookieParser())
 app.use(cors({
-    
-    origin: "https://socio-sphere-client.vercel.app/",
     credentials: true,
 }
 ))
-app.options('https://socio-sphere-client.vercel.app/', cors())
+app.options('*', cors())
 
 app.use('/auth', authRouter)
 app.use('/posts', postsRouter)
@@ -40,6 +39,11 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 4001
 
 dbConnect();
+
+app.get("/", (req, res) => {
+    app.use(express.static(path.resolve(__dirname, "client", "build")));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
 
 app.listen(PORT, () => {
     console.log(`listening on port : ${PORT}`);
